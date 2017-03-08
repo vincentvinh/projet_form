@@ -51,8 +51,7 @@
 // Connexion à la base de données
 
 
-    $bdd = new PDO('mysql:host=localhost;dbname=formulaire_ex;charset=utf8', 'root', 'root');
-
+  include 'modele/connexion.php';
 
 
 $reponse = $bdd->query('SELECT prenom, age, nom, langage FROM form ORDER BY ID DESC LIMIT 0, 10');

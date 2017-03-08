@@ -12,17 +12,21 @@
 //echo "nom tapé par l'utilisateur : ".$_POST['nom'] . "<br>";
 //echo "age tapé par l'utilisateur : ".$_POST['age'] . "<br>";
 //echo "langage tapé par l'utilisateur : ".$_POST['langage'] . "<br>";
-
+//if (empty($_POST['nom']) || empty($_POST['prenom']) || empty($_POST['age'])) 
+//{
+//	echo "remplir les champs";
+//}
+//else
+//{
+//	$nom = htmlspecialchars($_POST['nom']);
+//	$prenom = htmlspecialchars($_POST['prenom']);
+//	$age = htmlspecialchars($_POST['age']);
+//		$langage = htmlspecialchars($_POST['langage']);
+//}
 
 // Connexion à la base de données
-try
-{
-	$bdd = new PDO('mysql:host=localhost;dbname=formulaire_ex;charset=utf8', 'root', 'root');
-}
-catch(Exception $e)
-{
-        die('Erreur : '.$e->getMessage());
-}
+
+
 if (empty($_POST['nom']) || empty($_POST['prenom']) || empty($_POST['age']))
 {
 	echo "remplir les champs"; ?>
@@ -34,6 +38,7 @@ if (empty($_POST['nom']) || empty($_POST['prenom']) || empty($_POST['age']))
 }
 else
 {
+	include'modele/connexion.php';
 // Insertion du message à l'aide d'une requête préparée
 $req = $bdd->prepare('INSERT INTO form (nom, prenom, age, langage) VALUES(?, ?, ?, ?)');
 $req->execute(array($_POST['nom'], $_POST['prenom'], $_POST['age'], $_POST['langage']));
