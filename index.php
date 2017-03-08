@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-</head>
-<body>
 
+<?php include "include/header.php"; ?>
 
  <form action="result.php" method="post" name="formulaire">
  	<tr>
@@ -64,5 +58,5 @@ while ($donnees = $reponse->fetch())
 $reponse->closeCursor();
 
 ?>
-</body>
-</html>
+
+<?php include "include/header.php"; ?>
