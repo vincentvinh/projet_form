@@ -38,12 +38,22 @@ if (empty($_POST['nom']) || empty($_POST['prenom']) || empty($_POST['age']))
 }
 else
 {
+	$nom = htmlspecialchars($_POST['nom']);
+	$prenom = htmlspecialchars($_POST['prenom']);
+	$age = htmlspecialchars($_POST['age']);
+		$langage = htmlspecialchars($_POST['langage']);
 	include'modele/connexion.php';
 // Insertion du message à l'aide d'une requête préparée
 $req = $bdd->prepare('INSERT INTO form (nom, prenom, age, langage) VALUES(?, ?, ?, ?)');
-$req->execute(array($_POST['nom'], $_POST['prenom'], $_POST['age'], $_POST['langage']));
-header('Location: index.php');
+//
+
+$req->execute(array($nom, $prenom, $age, $langage));
+
+$req->closeCursor();
 }
+header('Location: index.php');
+
+
 ?>
 </body>
 </html>

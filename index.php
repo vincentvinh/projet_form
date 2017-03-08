@@ -51,25 +51,17 @@
 // Connexion à la base de données
 
 
-  include 'modele/connexion.php';
-
+  include'modele/connexion.php';
 
 $reponse = $bdd->query('SELECT prenom, age, nom, langage FROM form ORDER BY ID DESC LIMIT 0, 10');
 
-
 // Affichage de chaque message (toutes les données sont protégées par htmlspecialchars)
-
 while ($donnees = $reponse->fetch())
-
 {
-
     echo '<p>Nom : ' . htmlspecialchars($donnees['nom']) . ' prenom :  ' . htmlspecialchars($donnees['prenom']) . ' age :  ' . $donnees['age'] . ' langage : ' . htmlspecialchars($donnees['langage']) . '</p>';
-
 }
 
-
 $reponse->closeCursor();
-
 
 ?>
 </body>
